@@ -2,9 +2,11 @@ package pty
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"io"
 	"os"
+	"runtime"
 	"testing"
 )
 
@@ -14,6 +16,9 @@ func openClose(t *testing.T) (pty, tty *os.File) {
 
 	pty, tty, err := Open()
 	if err != nil {
+		if errors.Is(err, ErrUnsupported) {
+			t.Skipf("Open is unsupported on %s/%s.", runtime.GOOS, runtime.GOARCH)
+		}
 		t.Fatalf("Unexpected error from Open: %s.", err)
 	}
 	t.Cleanup(func() {

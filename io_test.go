@@ -104,6 +104,9 @@ func prepare(t *testing.T) (ptmx *os.File, done func()) {
 
 	ptmx, pts, err := Open()
 	if err != nil {
+		if errors.Is(err, ErrUnsupported) {
+			t.Skipf("Open is unsupported on %s/%s.", runtime.GOOS, runtime.GOARCH)
+		}
 		t.Fatalf("Error: open: %s.\n", err)
 	}
 	_ptmx := ptmx
