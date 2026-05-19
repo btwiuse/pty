@@ -35,6 +35,7 @@ cross solaris   amd64
 
 # Not expected to work but should still compile.
 cross windows amd64 386 arm
+cross js wasm
 
 # TODO: Fix compilation error on openbsd/arm.
 # TODO: Merge the solaris PR.

@@ -2,6 +2,11 @@
 
 Pty is a Go package for using unix pseudo-terminals.
 
+## js/wasm
+
+The package now cross-compiles for `GOOS=js GOARCH=wasm`.
+Window sizing helpers are available there with an in-memory fallback, but pseudo-terminal allocation and process startup still return `ErrUnsupported` unless the runtime provides compatible PTY primitives.
+
 ## Install
 
 ```sh

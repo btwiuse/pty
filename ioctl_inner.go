@@ -1,5 +1,5 @@
-//go:build !windows && !solaris && !aix
-// +build !windows,!solaris,!aix
+//go:build !windows && !solaris && !aix && !js
+// +build !windows,!solaris,!aix,!js
 
 package pty
 
